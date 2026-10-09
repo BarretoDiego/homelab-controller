@@ -1,0 +1,12 @@
+Use your built-in image generation tool to create six hero illustrations for a macOS app called "Home Lab" (monitors and remote-controls a home server). Style reference: the large 3D glass objects in CleanMyMac's main window — a single chunky object rendered in 3D, thick frosted/translucent glass with soft inner glow, rounded bevels, glossy rim highlights, subtle refraction, floating at a slight three-quarter tilt, soft studio lighting. Premium, modern, clean. No text, no letters, no UI, no watermark, no ground plane, no drop shadow on a floor.
+
+Every image: 1024x1024 PNG with a TRANSPARENT background (real alpha channel), object centered and filling about 75% of the canvas. If and only if your tool cannot output transparency, use a pure black (#000000) background instead with nothing else in it. Save each in the current directory with exactly these file names; write no other files and touch nothing outside this directory.
+
+1. hero-dashboard.png — a little house whose body is a stack of three rounded server slabs with tiny glowing status lights, under a thick glass roof. Violet and cyan glass.
+2. hero-connect.png — a thick glass desktop monitor / screen slab with a glowing cursor arrow inside it. Electric blue and cyan glass.
+3. hero-files.png — a chunky glass folder with two glass sheets peeking out. Teal and aqua glass.
+4. hero-security.png — a thick glass shield with a glowing keyhole in the middle. Warm orange and amber glass.
+5. hero-services.png — three stacked hexagonal or rounded glass discs like layered modules with small glowing dots. Emerald green glass.
+6. hero-setup.png — a glass sphere with two orbit rings around it and a small glowing spark, like a scanning radar/planet. Magenta and violet glass.
+
+After saving, list the six files with pixel dimensions and whether each has an alpha channel.

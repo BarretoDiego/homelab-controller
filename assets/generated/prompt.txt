@@ -1,0 +1,11 @@
+Use your built-in image generation tool to create three brand assets for a macOS menu bar app called "Home Lab" (it monitors and remote-controls a home server: status, remote desktop, files). Save each as a PNG in the current directory with exactly these file names. Do not write any other files except the three PNGs, and do not modify anything outside this directory.
+
+Shared visual identity: futuristic, premium, calm. Deep space navy/indigo background (#0B1020 to #1B1F4B), with electric cyan (#3DE0FF) and violet (#8B5CFF) accents, soft glow, subtle glass depth. One clear symbol used across all three: a stylized compact server/rack unit (two or three stacked rounded slabs with tiny status lights) sheltered under a minimal house roof outline, so it reads as "home" + "lab/server". Clean geometric shapes, no text, no letters, no watermark.
+
+1. app-icon.png — 1024x1024. A macOS app icon: a rounded-square (squircle) tile filling almost the whole canvas with a small transparent or plain dark margin, dark navy-to-indigo gradient tile, the house+server symbol centered, glowing cyan/violet edges, slight 3D depth and a soft inner highlight like modern macOS icons. Must stay recognizable at 32 px: bold shapes, few details.
+
+2. menubar-glyph.png — 1024x1024. The same house+server symbol as a flat, solid pure-black silhouette glyph on a pure white background. No gradients, no gray, no glow, no shadow. Thick uniform strokes, simple enough to be readable at 18 px tall, centered with generous margin. This will be converted to a monochrome template icon.
+
+3. dmg-background.png — 1320x800 (landscape). Background for a disk-image installer window: dark navy-to-indigo gradient with a faint futuristic grid or circuit glow, very subtle. The left third and the right third must be calm, empty areas (icons will sit at about x=330,y=400 and x=990,y=400). In the center, between them, a glowing cyan arrow pointing from left to right. No text at all.
+
+After saving, list the three files with their pixel dimensions.

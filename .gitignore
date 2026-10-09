@@ -1,0 +1,6 @@
+dist/
+assets/build/
+packaging/.venv/
+.DS_Store
+# transcripts of the image-generation runs; the prompts next to them are kept
+assets/generated/codex-*

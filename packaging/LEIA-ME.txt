@@ -1,0 +1,21 @@
+HOME LAB
+
+No Mac
+1. Arraste "Home Lab" para Applications e abra. Ele fica na barra de menus (ícone de servidor).
+   O app não é assinado pela Apple: na primeira vez, clique com o botão direito > Abrir.
+2. Requisitos: FreeRDP (brew install freerdp) e, para acesso fora de casa, Tailscale.
+3. No painel, clique no nome do ambiente > "Adicionar ambiente…". O assistente testa o SSH,
+   instala a chave deste Mac se precisar, lê o host, prepara o compartilhamento de tela
+   e fixa o certificado.
+
+No Linux
+Nada é obrigatório: o assistente do Mac prepara o host por SSH. Para preparar à mão, baixe o
+homelab-host_<versão>_all.deb da mesma página de versões e rode:
+   sudo apt install ./homelab-host_*_all.deb
+   homelab-host setup
+
+Requisitos do host: Ubuntu/Debian com GNOME, sessão gráfica aberta (login automático
+recomendado) e SSH ligado.
+
+Atualizações: o app avisa quando há versão nova em
+https://github.com/BarretoDiego/homelab-controller/releases e se atualiza sozinho ao aceitar.

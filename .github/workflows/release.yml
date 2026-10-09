@@ -1,0 +1,68 @@
+name: Release
+
+# Pushing a tag like v5.1.0 builds the Mac app and the host package and publishes them as a
+# GitHub release. The app's updater reads that release. Run by hand to build without publishing.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mac:
+    name: Mac app
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+      - name: Stamp the version from the tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${GITHUB_REF_NAME#v}" \
+                                  -c "Set :CFBundleVersion ${GITHUB_RUN_NUMBER}" Info.plist
+      - name: Build, self-test and package
+        run: ./build.sh --ci
+      - uses: actions/upload-artifact@v5
+        with:
+          name: mac
+          path: |
+            dist/*.dmg
+            dist/*.app.zip
+          if-no-files-found: error
+
+  host:
+    name: Host package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the .deb
+        run: python3 packaging/build-deb.py host/homelab-host.py dist
+      - name: Check the package
+        run: |
+          python3 -m py_compile host/homelab-host.py
+          dpkg-deb --info dist/*.deb
+          dpkg-deb --contents dist/*.deb
+          sudo apt-get install --simulate ./dist/*.deb
+      - uses: actions/upload-artifact@v5
+        with:
+          name: host
+          path: dist/*.deb
+          if-no-files-found: error
+
+  publish:
+    name: Publish the release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [mac, host]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          path: out
+          merge-multiple: true
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" out/* --repo "$GITHUB_REPOSITORY" \
+            --title "Home Lab ${GITHUB_REF_NAME#v}" --generate-notes
